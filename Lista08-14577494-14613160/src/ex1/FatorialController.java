@@ -7,7 +7,6 @@ import javax.swing.SwingWorker;
  * Controlador que gerencia a interação entre o modelo e a visão.
  */
 public class FatorialController {
-    private FatorialModel model;
     private FatorialView view;
 
     /**
@@ -16,7 +15,6 @@ public class FatorialController {
      * @param view A visão que exibe a interface gráfica.
      */
     public FatorialController(FatorialModel model, FatorialView view) {
-        this.model = model;
         this.view = view;
         this.view.setController(this);
     }
