@@ -8,6 +8,7 @@ import javax.swing.SwingWorker;
  */
 public class FatorialController {
     private FatorialView view;
+    private volatile boolean calculating = false;  // Variável de estado para rastrear se o cálculo está em progresso
 
     /**
      * Construtor do controlador.
@@ -24,8 +25,14 @@ public class FatorialController {
      * @param input A entrada do usuário.
      */
     public void calcularFatorial(String input) {
+        if (calculating) {
+            view.displayError("Por favor, espere o cálculo atual terminar.");
+            return;
+        }
+        
         try {
             BigInteger number = new BigInteger(input);
+            calculating = true;
             new FatorialTask(number).execute();
         } catch (NumberFormatException e) {
             view.displayError("Por favor, insira um número válido.");
@@ -80,6 +87,8 @@ public class FatorialController {
                 } else {
                     view.displayError("Erro ao calcular o fatorial.");
                 }
+            } finally {
+                calculating = false;  // Atualiza o estado para indicar que o cálculo foi concluído
             }
         }
     }
