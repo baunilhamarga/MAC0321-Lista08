@@ -2,6 +2,7 @@ package ex3;
 
 import java.util.LinkedList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MulticonjuntoLinkedList<T> implements Multiconjunto<T> {
     private LinkedList<T> elements = new LinkedList<>();
@@ -37,5 +38,10 @@ public class MulticonjuntoLinkedList<T> implements Multiconjunto<T> {
     @Override
     public String toString() {
         return elements.toString();
+    }
+    
+    @Override
+    public Iterator<T> iterator() {
+        return elements.iterator();
     }
 }

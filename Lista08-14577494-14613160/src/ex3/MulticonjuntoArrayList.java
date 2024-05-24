@@ -2,6 +2,7 @@ package ex3;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MulticonjuntoArrayList<T> implements Multiconjunto<T> {
     private ArrayList<T> elements = new ArrayList<>();
@@ -42,5 +43,10 @@ public class MulticonjuntoArrayList<T> implements Multiconjunto<T> {
     	ArrayList<T> sortedElements = new ArrayList<>(elements);
     	sortedElements.sort(null);
     	return sortedElements;
+    }
+    
+    @Override
+    public Iterator<T> iterator() {
+        return elements.iterator();
     }
 }

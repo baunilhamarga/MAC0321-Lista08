@@ -3,6 +3,7 @@ package ex3;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MulticonjuntoStack<T> implements Multiconjunto<T> {
     private Stack<T> elements = new Stack<>();
@@ -40,5 +41,10 @@ public class MulticonjuntoStack<T> implements Multiconjunto<T> {
     @Override
     public String toString() {
         return elements.toString();
+    }
+    
+    @Override
+    public Iterator<T> iterator() {
+        return elements.iterator();
     }
 }

@@ -2,6 +2,7 @@ package ex3;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.Set;
 
@@ -61,5 +62,10 @@ public class MulticonjuntoSet<T extends Comparable<T>> implements Multiconjunto<
     @Override
     public String toString() {
         return getSortedElements().toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return getSortedElements().iterator();
     }
 }
