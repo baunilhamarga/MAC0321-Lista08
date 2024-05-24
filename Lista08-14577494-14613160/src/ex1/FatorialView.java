@@ -9,14 +9,15 @@ import java.awt.event.ActionListener;
  * Classe responsável pela interface gráfica do usuário.
  */
 public class FatorialView {
-    private JFrame frame;
-    private JTextField inputField;
-    private JButton calculateButton;
-    private JTextArea resultArea;
+    private static JFrame frame;
+    private static JTextField inputField;
+    private static JButton calculateButton;
+    private static JTextArea resultArea;
     private JScrollPane scrollPane;
     private JProgressBar progressBar;
     private JLabel progressLabel;
     private FatorialController controller;
+    private static String error;
 
     /**
      * Construtor que inicializa a interface gráfica.
@@ -102,7 +103,8 @@ public class FatorialView {
      * @param errorMessage A mensagem de erro a ser exibida.
      */
     public void displayError(String errorMessage) {
-        JOptionPane.showMessageDialog(frame, errorMessage, "Erro", JOptionPane.ERROR_MESSAGE);
+    	error = errorMessage;
+    	resultArea.setText(errorMessage);
     }
 
     /**
@@ -125,6 +127,27 @@ public class FatorialView {
      * Método principal para iniciar a aplicação.
      * @param args Argumentos da linha de comando (não utilizados).
      */
+
+    public static JButton getButton() {
+    	return calculateButton;
+    }
+
+    public static JTextField getInputField() {
+    	return inputField;
+    }
+
+    public static JTextArea getResult() {
+    	return resultArea;
+    }
+
+    public static String getError() {
+    	return error;
+    }
+
+    public static JFrame getFrame() {
+    	return frame;
+    }
+
     public static void main(String[] args) {
         FatorialModel model = new FatorialModel();
         FatorialView view = new FatorialView();
